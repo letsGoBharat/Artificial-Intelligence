@@ -16,7 +16,6 @@ public class Player {
 
     private HashMap<String, Integer> states = new HashMap<String, Integer>();
 
-//  Vector<GameState> nextStates;
 
     /**
      * Performs a move
@@ -38,13 +37,6 @@ public class Player {
          * Here you should write your algorithms to get the best next move, i.e. the
          * best next state. This skeleton returns a random move instead.
          */
-        // Random random = new Random();
-        // return nextStates.elementAt(random.nextInt(nextStates.size()));
-
-        // Check hashes
-        // if(states.containsKey(gameState.toMessage()){
-        // return states.get(gameState.toMessage());
-        // }
 
         // Get the current player
         if (gameState.getNextPlayer() == OPPONENT) {
@@ -137,9 +129,7 @@ public class Player {
                 return Integer.MAX_VALUE;
             } else if((state.isWhiteWin() && player == Constants.CELL_RED) || (state.isRedWin() && player == Constants.CELL_WHITE)) {
                 return Integer.MIN_VALUE;
-            } /*else if(state.isDraw()) {
-                return 0;
-            }*/
+            } 
         }
         
         // Build matrix
@@ -153,14 +143,8 @@ public class Player {
         for (int i = 0; i < GameState.NUMBER_OF_SQUARES; i++) {
             for (int j = 0; j < GameState.NUMBER_OF_SQUARES; j++) {
                 if (board[i][j] == MY_PLAYER) {
-                    /*if(board[i][j] == KING) {
-                        score += 200000;
-                    }*/
                     score += 100;
                 } else if (board[i][j] == OPPONENT) {
-                    /*if(board[i][j] == KING) {
-                        score -= 200000;
-                    }*/
                     score -= 50;
                 }
             }
@@ -170,14 +154,8 @@ public class Player {
         for (int i = 0; i < GameState.NUMBER_OF_SQUARES; i++) {
             for (int j = 0; j < GameState.NUMBER_OF_SQUARES; j++) {
                 if (board[j][i] == MY_PLAYER) {
-                    /*if(board[j][i] == KING) {
-                        score += 200000;
-                    }*/
                     score += 100;
                 } else if (board[j][i] == OPPONENT) {
-                    /*if(board[j][i] == KING) {
-                        score -= 200000;
-                    }*/
                     score -= 50;
                 }
             }
@@ -186,27 +164,15 @@ public class Player {
         // Diagonals
         for (int i = 0; i < GameState.NUMBER_OF_SQUARES; i++) {
             if (board[i][i] == MY_PLAYER) {
-                /*if(board[i][i] == KING) {
-                    score += 200000;
-                }*/
                 score += 100;
             } else if (board[i][i] == OPPONENT) {
-               /* if(board[i][i] == KING) {
-                    score -= 200000;
-                }*/
                 score -= 50;
             }
         }
         for (int i = 0; i < GameState.NUMBER_OF_SQUARES; i++) {
             if (board[i][GameState.NUMBER_OF_SQUARES - 1 - i] == MY_PLAYER) {
-                /*if(board[i][GameState.NUMBER_OF_SQUARES - 1 - i] == KING) {
-                    score += 200000;
-                }*/
                 score += 100;
             } else if (board[i][GameState.NUMBER_OF_SQUARES - 1 - i] == OPPONENT) {
-                /*if(board[i][GameState.NUMBER_OF_SQUARES - 1 - i] == KING) {
-                    score -= 200000;
-                }*/
                 score -= 50;
             }
         }
